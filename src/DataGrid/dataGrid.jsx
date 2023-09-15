@@ -44,12 +44,21 @@ const DataGrid = () => {
   //State for modal data
   const [modatData, setModalData] = useState({});
 
+  //State for Form data
+  const [shipId, setShipId] = useState("");
+  const [shipType, setShipType] = useState("");
+  const [shipStatus, setShipStatus] = useState("");
+
+  //URL to fetch data
+  const url = `https://api.spacexdata.com/v3/ships`;
+  const [urlAPI, setUrlAPI] = useState(url);
+
   useEffect(() => {
-    fetch(`https://api.spacexdata.com/v3/ships`, requestOptions)
+    fetch(urlAPI, requestOptions)
       .then((response) => response.json())
       .then((result) => setShipData([...result]))
       .catch((error) => console.log("error", error));
-  }, []);
+  }, [urlAPI]);
 
   //fetch modal data onClick
   const fetchModalData = (shipId) => {
@@ -57,8 +66,28 @@ const DataGrid = () => {
       return shipId === item.ship_id;
     });
     setModalData(response);
+  };
 
-    //console.log(modatData[0].ship_name);
+  //Handle form input
+  const handleFormData = (event) => {
+    if (shipId === "" && shipType === "" && shipStatus === "") {
+      setUrlAPI(`https://api.spacexdata.com/v3/ships`);
+    }
+
+    if (event.target.id === "ship_id") {
+      setShipId(event.target.value);
+    } else if (event.target.id === "ship_type") {
+      setShipType(event.target.value);
+    } else if (event.target.id === "active") {
+      setShipStatus(event.target.value);
+    }
+  };
+
+  //Handle Search
+  const handleSearch = () => {
+    setUrlAPI(
+      `https://api.spacexdata.com/v3/ships?ship_id=${shipId}&ship_type=${shipType}&active=${shipStatus}`
+    );
   };
 
   return (
@@ -66,7 +95,7 @@ const DataGrid = () => {
       <div className="dataGridContainer">
         <h1>Search</h1>
 
-        <div className="outerContainer">
+        <div className="outerContainer" onChange={handleFormData}>
           <div className="innerContainerOne">
             <div className="firstInputBox">
               <label htmlFor="ship_id">Ship ID: </label>
@@ -74,6 +103,7 @@ const DataGrid = () => {
                 id="ship_id"
                 type="text"
                 placeholder="Try searching AMERICANCHAMPION!!"
+                value={shipId}
               />
             </div>
             <div className="secondInputBox">
@@ -82,17 +112,23 @@ const DataGrid = () => {
                 id="ship_type"
                 type="text"
                 placeholder="Try Tug or Cargo!"
+                value={shipType}
               />
             </div>
           </div>
 
           <div className="innerContainerTwo">
             <label htmlFor="active">Active Status: </label>
-            <input id="active" type="text" placeholder="Try True/False" />
+            <input
+              id="active"
+              type="text"
+              placeholder="Try True/False"
+              value={shipStatus}
+            />
           </div>
 
           <div className="innerContainerThree">
-            <button>Search</button>
+            <button onClick={handleSearch}>Search</button>
           </div>
         </div>
       </div>
@@ -178,7 +214,9 @@ const DataGrid = () => {
             home_port - {modatData[0]?.home_port}
           </Typography>
           <button className="modalButtonUrl">
-            <a href={modatData[0]?.url}>Visit Website</a>
+            <a href={modatData[0]?.url} target="_blank">
+              Visit Website
+            </a>
           </button>
         </Box>
       </Modal>
