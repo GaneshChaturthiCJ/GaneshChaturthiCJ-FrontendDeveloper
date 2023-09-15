@@ -129,3 +129,12 @@ button:hover {
     background-position: center;
     background-repeat: no-repeat;
 }
+.modalImage {
+    width: 300px;
+    height: 200px;
+}
+
+.modalButtonUrl a {
+    text-decoration: none;
+    color: white;
+}
