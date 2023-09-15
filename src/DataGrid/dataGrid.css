@@ -4,6 +4,8 @@
     margin: auto;
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid black;
+    border-radius: 5px;
+        padding: 5px;
 
 }
 
@@ -110,7 +112,10 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 30px;
-        margin-top: 25px;
+    margin-top: 25px;
+    padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgb(147, 147, 147);
 }
 
 .card {
@@ -137,4 +142,9 @@ button:hover {
 .modalButtonUrl a {
     text-decoration: none;
     color: white;
+}
+.noDataImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
