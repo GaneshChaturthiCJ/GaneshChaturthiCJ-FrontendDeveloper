@@ -4,11 +4,14 @@
     margin: auto;
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid black;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
         padding: 5px;
 
 }
 
+.dataGridContainer h1 {
+    margin-left: 40px;
+}
 .outerContainer {
     width: 80%;
     margin: auto;

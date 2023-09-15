@@ -93,7 +93,7 @@ const DataGrid = () => {
   return (
     <>
       <div className="dataGridContainer">
-        <h1>Search</h1>
+        <h1>Search - Explore wide range of ships</h1>
 
         <div className="outerContainer" onChange={handleFormData}>
           <div className="innerContainerOne">
