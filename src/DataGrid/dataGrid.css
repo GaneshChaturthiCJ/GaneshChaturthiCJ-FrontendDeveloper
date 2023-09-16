@@ -151,3 +151,9 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
+.leftArrow {
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -93,7 +93,7 @@ const DataGrid = () => {
   return (
     <>
       <div className="dataGridContainer">
-        <h1>Search - Explore wide range of ships</h1>
+        <h1>Search wide range of ships</h1>
 
         <div className="outerContainer" onChange={handleFormData}>
           <div className="innerContainerOne">
@@ -137,7 +137,7 @@ const DataGrid = () => {
         <div className="cardsContainer">
           {shipData.map((shipItem) => {
             return (
-              <div id={shipItem.ship_id}>
+              <div id={shipItem.ship_id} key={shipItem.ship_id}>
                 <Card sx={{ maxWidth: 345 }}>
                   <CardActionArea>
                     <CardMedia
@@ -165,7 +165,10 @@ const DataGrid = () => {
                       fetchModalData(shipItem.ship_id);
                     }}
                   >
-                    More Info
+                    More Info{" "}
+                    <span>
+                      <img src="./left-arrow.svg" className="leftArrow" />
+                    </span>
                   </Button>
                 </Card>
               </div>
