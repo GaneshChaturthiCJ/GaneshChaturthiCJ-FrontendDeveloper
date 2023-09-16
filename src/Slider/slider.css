@@ -16,9 +16,6 @@
 }
 
 
-/* @mixin white-gradient */
-/* No equivalent in pure CSS */
-
 /* $animationSpeed */
 :root {
     --animation-speed: 40s;

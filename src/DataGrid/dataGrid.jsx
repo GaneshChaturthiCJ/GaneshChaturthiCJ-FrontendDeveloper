@@ -96,8 +96,6 @@ const DataGrid = () => {
     handleSearch(shipTypeCap, shipStatus);
   };
 
-  //Handle Search
-
   return (
     <>
       <div className="dataGridContainer">
