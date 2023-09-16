@@ -1,5 +1,18 @@
 # React + Vite
 
+Tech Stack Used:
+-React, HTML, CSS, JavaScript
+
+Resources Used:
+- Material UI https://mui.com/material-ui/
+- Google, Youtube, codepen.
+
+  Run Command
+  -npm run dev
+
+  
+  
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
