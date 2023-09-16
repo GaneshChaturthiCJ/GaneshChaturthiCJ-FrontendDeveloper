@@ -70,10 +70,6 @@ const DataGrid = () => {
 
   //Handle form input
   const handleFormData = (event) => {
-    if (shipId === "" && shipType === "" && shipStatus === "") {
-      setUrlAPI(`https://api.spacexdata.com/v3/ships`);
-    }
-
     if (event.target.id === "ship_id") {
       setShipId(event.target.value);
     } else if (event.target.id === "ship_type") {
@@ -83,12 +79,24 @@ const DataGrid = () => {
     }
   };
 
-  //Handle Search
-  const handleSearch = () => {
+  function capitalizeFirstLetter(str) {
+    if (str.length === 0) return str; // Handle empty string
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  const handleSearch = (shipTypeCap, shipStatus) => {
     setUrlAPI(
-      `https://api.spacexdata.com/v3/ships?ship_id=${shipId}&ship_type=${shipType}&active=${shipStatus}`
+      `https://api.spacexdata.com/v3/ships?ship_id=${shipId}&ship_type=${shipTypeCap}&active=${shipStatus}`
     );
   };
+
+  //To capitalize first letter of ship status
+  const capiTalizeSearchWords = () => {
+    const shipTypeCap = capitalizeFirstLetter(shipType);
+    handleSearch(shipTypeCap, shipStatus);
+  };
+
+  //Handle Search
 
   return (
     <>
@@ -122,13 +130,13 @@ const DataGrid = () => {
             <input
               id="active"
               type="text"
-              placeholder="Try True/False"
+              placeholder="Try true/false"
               value={shipStatus}
             />
           </div>
 
           <div className="innerContainerThree">
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={capiTalizeSearchWords}>Search</button>
           </div>
         </div>
       </div>
